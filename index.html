@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaveReschedule | Automated Weather Rebooking for Irish Adventure Providers</title>
+    <style>
+        :root {
+            --primary: #004080;
+            --primary-dark: #00264d;
+            --accent: #0080ff;
+            --bg: #f4f8fb;
+            --surface: #ffffff;
+            --text: #1a252f;
+            --text-light: #555555;
+            --border: #dcdcdc;
+            --success: #28a745;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        .hero {
+            background: var(--surface);
+            padding: 24px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Buttons (Min 55px height for mobile) */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:active {
+            background: var(--primary-dark);
+        }
+
+        section {
+            background: var(--surface);
+            padding: 20px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        section h3 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 6px;
+        }
+
+        .quote-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            font-style: italic;
+            color: #856404;
+            margin-bottom: 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .steps-list li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .steps-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .pricing-box {
+            text-align: center;
+            background: #eef2f7;
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .pricing-box .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 6px 0;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            min-height: 55px;
+        }
+
+        .thank-you-msg {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>WaveReschedule</h1>
+        <p>Automated weather cancellation & rebooking for Irish outdoor activity providers</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>Stop Losing Revenue to Weather Cancellations</h2>
+            <p>Turn 3 hours of stressful phone tag and lost bookings into a 1-click automated rebooking queue.</p>
+            <a href="https://yourusername.github.io/your-demo-repo-name/" class="btn-primary" target="_blank">Try the Live Demo</a>
+        </div>
+
+        <!-- Problem Section -->
+        <section>
+            <h3>The Problem</h3>
+            <div class="quote-box">
+                "When a gale hits or the surf blows out, I spend three solid hours on the phone and WhatsApp trying to reschedule 60 angry customers, and by the end of it, five of them just give up and demand refunds."
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-light);">Independent surf schools and coastal adventure providers along the Wild Atlantic Way waste precious peak-season hours managing weather pull-outs manually on paper diaries and spreadsheets[cite: 4, 6].</p>
+        </section>
+
+        <!-- How It Works Section -->
+        <section>
+            <h3>How It Works in 3 Steps</h3>
+            <ul class="steps-list">
+                <li><strong>1. One-Tap Cancellation:</strong> Instantly cancel a weather-impacted lesson slot on your phone, moving all affected participants directly to a dedicated rebooking list.</li>
+                <li><strong>2. Smart Rebooking Queue:</strong> View matching customers and instantly assign them via quick-tap buttons to the next 3 available sessions with open capacity. Overdue bookings automatically turn red after 48 hours[cite: 4].</li>
+                <li><strong>3. Live Revenue Tracking:</strong> Track exact customer counts waiting for slots and real-time euro values at risk before they lapse[cite: 4].</li>
+            </ul>
+        </section>
+
+        <!-- Pricing Section -->
+        <section>
+            <h3>Simple, Predictable Pricing</h3>
+            <div class="pricing-box">
+                <p style="font-size: 0.9rem; text-transform: uppercase; font-weight: bold; color: var(--text-light);">Launch Plan</p>
+                <div class="price">€150 setup + €49/mo</div>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">Designed for seasonal outdoor operators with adjustable cash flow.</p>
+            </div>
+        </section>
+
+        <!-- Call to Action / Waiting List Form -->
+        <section>
+            <h3>Join the Early Access Waiting List</h3>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px;">Be first in line when we open onboarding for the upcoming season.</p>
+            
+            <form id="waitlist-form" onsubmit="handleFormSubmit(event)">
+                <input type="text" id="business-name" placeholder="Your Business Name (e.g. Clare Surf Co.)" required>
+                <input type="email" id="email" placeholder="Your Email Address" required>
+                <button type="submit" class="btn-submit">Request Early Access</button>
+            </form>
+            <div id="thank-you" class="thank-you-msg">
+                Thank you! Your spot on the WaveReschedule waiting list has been reserved.
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><a href="notes.html">Behind the build</a> | Built for NCI T4B CA2</p>
+    </footer>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('waitlist-form').style.display = 'none';
+            document.getElementById('thank-you').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
